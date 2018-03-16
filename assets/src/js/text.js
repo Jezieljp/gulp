@@ -5,3 +5,5 @@ var app = (function(document){
     document.getElementById("logoDesc").innerHTML = "Autmatize o seu projeto Dinamico Com JavaScript";
     document.getElementById("video").innerHTML = "Gulp-Uglify";    
 })(document);//Executando o script 
+
+alert('holla mundo');

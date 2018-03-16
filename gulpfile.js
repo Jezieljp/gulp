@@ -14,7 +14,9 @@ gulp.task('sass', function(){
 gulp.task('js', function(){
     return gulp.src('assets/src/js/**/*.js')
     .pipe(concat('script.min.js'))
-    .pipe(uglify())
+    .pipe(uglify({compress:{
+      sequences:false
+    }}))
     .pipe(gulp.dest('assets/js'))
 })
 
