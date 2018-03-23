@@ -4,6 +4,7 @@ var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var htmlmin = require('gulp-htmlmin');
 var browserSync = require("browser-sync").create();
+var notify = require('gulp-notify');
 var jshint = require('gulp-jshint');
 var stylish = require('jshint-stylish');
 
@@ -11,7 +12,8 @@ var stylish = require('jshint-stylish');
 gulp.task('sass', function(){
  return gulp.src('assets/src/sass/**/*.scss')//pega arquivo na pasta
  .pipe(concat('style.min.css'))//renomeia o arquivo
- .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+ .pipe(sass({outputStyle: 'compressed'}))//.on('error', sass.logError))
+ .on('error', notify.onError({title: "erro scss", message: "<%= error.message %>"}))
  .pipe(gulp.dest('assets/css')) 
  .pipe(browserSync.stream());
 });
