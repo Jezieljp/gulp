@@ -9,10 +9,15 @@ var jshint = require('gulp-jshint');
 var stylish = require('jshint-stylish');
 
 
+
+ 
+
+
 gulp.task('sass', function(){
  return gulp.src('assets/src/sass/**/*.scss')//pega arquivo na pasta
  .pipe(concat('style.min.css'))//renomeia o arquivo
- .pipe(sass({outputStyle: 'compressed'}))//.on('error', sass.logError))
+ .pipe(sass({outPutStyle: 'compressed'}))//.on('error', sass.logError))
+ .pipe(notify("Hello Gulp!"))
  .on('error', notify.onError({title: "erro scss", message: "<%= error.message %>"}))
  .pipe(gulp.dest('assets/css')) 
  .pipe(browserSync.stream());
@@ -60,5 +65,5 @@ gulp.task('lint', function(){
 });
 
 //Obsevando as task e executando
-gulp.task('default', ['sass', 'js', 'htmlmin', 'watch', 'server']);
+gulp.task('default', ['sass', 'js', 'htmlmin', 'watch', 'server', '']);
 
